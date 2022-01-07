@@ -31,7 +31,6 @@ public class Vua extends QuanCo {
         int thisX = this.getParam("x");
         int thisY = this.getParam("y");
         int thisColor = this.getParam("color");
-
         System.out.println("Tướng: (" + thisX + "," + thisY + ") --> (" + xMove + "," + yMove + ")");
 
         if (thisX == xMove) return  "Tướng " + thisX + " bình " + abs(thisY - yMove) + " - ";

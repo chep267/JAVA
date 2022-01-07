@@ -122,12 +122,13 @@ public class BanCo {
     }
 
     public void moveQuanCo(int x, int y, int xMove, int yMove) {
-        int type = this.banco[xMove][yMove].getParam("type");
+        int type = this.banco[x][y].getParam("type");
         int color = this.banco[x][y].getParam("color");
+        int typeMove = this.banco[xMove][yMove].getParam("type");
         System.out.print(this.banco[x][y].moveTo(xMove, yMove));
-        this.banco[xMove][yMove] = this.banco[x][y];
-        this.banco[x][y] = new Null(x, y);
-        this.anQuanCo(type, color);
+        this.banco[xMove][yMove] = this.taoQuanCo(xMove, yMove, type, color);
+        this.banco[x][y] = this.taoQuanCo(xMove, yMove, 0, 0);
+        this.anQuanCo(typeMove, color);
         this.inBanCo();
     }
 

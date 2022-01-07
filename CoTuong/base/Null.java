@@ -4,7 +4,7 @@ import static java.lang.Math.abs;
 
 public class Null extends QuanCo {
     public Null(int x, int y) {
-        this.constructor(x, y,0, 0, 0);
+        this.constructor(x, y,0, 0, 10);
     }
 
     @Override

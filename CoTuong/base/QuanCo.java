@@ -8,16 +8,8 @@ abstract class QuanCo {
 
     protected QuanCo() {}
 
-    abstract boolean canMoveTo(int x, int y, QuanCo[][] qc);
+    abstract boolean canMoveTo(int xMove, int yMove, QuanCo[][] qc);
     abstract String moveTo(int x, int y);
-
-    public QuanCo(QuanCo qc) {
-        this.x = qc.x;
-        this.y = qc.y;
-        this.type = qc.type;
-        this.color = qc.color;
-        this.point = qc.point;
-    }
 
     public void constructor(int x, int y, int type, int color, int point) {
         this.x = x;
