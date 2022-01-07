@@ -160,27 +160,32 @@ public class BanCo {
     }
 
     public void Auto_Play(int color, Random a) {
-        int x, y, xMove, yMove;
+        int x, y, xMove, yMove, step;
         boolean hasQuanCo;
         boolean canMove;
 
-        try {
-            do {
-                x = a.nextInt(10) + 1;
-                y = a.nextInt(9) + 1;
+        do {
+            step = 0;
+            x = a.nextInt(10) + 1;
+            y = a.nextInt(9) + 1;
 
-                hasQuanCo = this.banco[x][y].getParam("color") == color;
-            } while ( x < 1 || x > 10 || y < 1 || y > 9 || !hasQuanCo);
+            hasQuanCo = this.banco[x][y].getParam("color") == color;
+            if (hasQuanCo) {
+                do {
+                    xMove = a.nextInt(10) + 1;
+                    yMove = a.nextInt(9) + 1;
 
-            do {
-                xMove = a.nextInt(10) + 1;
-                yMove = a.nextInt(9) + 1;
+                    canMove = this.banco[x][y].canMoveTo(xMove, yMove, this.banco);
+                    if (canMove) {
+                        System.out.println("Máy đến: (" + xMove + "," + yMove + ")");
+                        this.moveQuanCo(x, y, xMove, yMove);
+                    }
+                    step++;
+                }  while ( xMove < 1 || xMove > 10 || yMove < 1 || yMove > 9 || (!canMove && step < 10));
+            }
+        } while ( x < 1 || x > 10 || y < 1 || y > 9 || !hasQuanCo || step == 10);
+        System.out.println("Máy chọn: (" + x + "," + y + ")  -->  " + this.banco[x][y].getParam("type"));
 
-                canMove = this.banco[x][y].canMoveTo(xMove, yMove, this.banco);
-                if (canMove) this.moveQuanCo(x, y, xMove, yMove);
-            }  while ( xMove < 1 || xMove > 10 || yMove < 1 || yMove > 9 || !canMove);
-        } catch (Exception e) {
-            System.out.println("error: " + e);
-        }
+
     }
 }
