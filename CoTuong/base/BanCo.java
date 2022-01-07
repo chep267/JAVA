@@ -135,30 +135,37 @@ public class BanCo {
         int x, y, xMove, yMove;
         boolean hasQuanCo;
         boolean canMove;
+        boolean failXY;
+        boolean failXYMove;
 
         do {
-            xMove = yMove = 0;
+            hasQuanCo = canMove = false;
             System.out.print("Nhập tọa độ x, y: ");
             x = sc.nextInt();
             y = sc.nextInt();
+            failXY = x < 1 || x > 10 || y < 1 || y > 9;
 
-            hasQuanCo = this.banco[x][y].getParam("color") == color;
-            if (!hasQuanCo) System.out.println("Không có quân cờ của bạn. Hãy chọn lại!");
+            if (failXY) System.out.println("Tọa độ bạn nhập chưa đúng!");
             else {
-                do {
-                    System.out.print("Nhập tọa độ xMove, yMove: ");
-                    xMove = sc.nextInt();
-                    yMove = sc.nextInt();
+                hasQuanCo = this.banco[x][y].getParam("color") == color;
+                if (!hasQuanCo) System.out.println("Không có quân cờ của bạn. Hãy chọn lại!");
+                else {
+                    do {
+                        System.out.print("Nhập tọa độ xMove, yMove: ");
+                        xMove = sc.nextInt();
+                        yMove = sc.nextInt();
 
-                    canMove = this.banco[x][y].canMoveTo(xMove, yMove, this.banco);
-                    if (canMove) this.moveQuanCo(x, y, xMove, yMove);
-                    else System.out.println("Nước này không đi được. Hãy chọn lại!");
-                }  while (xMove != 0 && yMove != 0 && (xMove < 1 || xMove > 10 || yMove < 1 || yMove > 9 || !canMove));
+                        failXYMove = xMove < 1 || xMove > 10 || yMove < 1 || yMove > 9;
+                        if (failXYMove) System.out.println("Tọa độ bạn nhập chưa đúng!");
+                        else {
+                            canMove = this.banco[x][y].canMoveTo(xMove, yMove, this.banco);
+                            if (!canMove) System.out.println("Nước này không đi được. Hãy chọn lại!");
+                            else this.moveQuanCo(x, y, xMove, yMove);
+                        }
+                    }  while (failXYMove);
+                }
             }
-        } while ( x < 1 || x > 10 || y < 1 || y > 9 || !hasQuanCo || (xMove == 0 && yMove == 0));
-
-
-
+        } while (failXY || !hasQuanCo || !canMove);
     }
 
     public void Auto_Play(int color, Random a) {
