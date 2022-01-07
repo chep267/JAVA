@@ -137,24 +137,26 @@ public class BanCo {
         boolean canMove;
 
         do {
+            xMove = yMove = 0;
             System.out.print("Nhập tọa độ x, y: ");
             x = sc.nextInt();
             y = sc.nextInt();
 
             hasQuanCo = this.banco[x][y].getParam("color") == color;
             if (!hasQuanCo) System.out.println("Không có quân cờ của bạn. Hãy chọn lại!");
+            else {
+                do {
+                    System.out.print("Nhập tọa độ xMove, yMove: ");
+                    xMove = sc.nextInt();
+                    yMove = sc.nextInt();
 
-        } while ( x < 1 || x > 10 || y < 1 || y > 9 || !hasQuanCo);
+                    canMove = this.banco[x][y].canMoveTo(xMove, yMove, this.banco);
+                    if (canMove) this.moveQuanCo(x, y, xMove, yMove);
+                    else System.out.println("Nước này không đi được. Hãy chọn lại!");
+                }  while (xMove != 0 && yMove != 0 && (xMove < 1 || xMove > 10 || yMove < 1 || yMove > 9 || !canMove));
+            }
+        } while ( x < 1 || x > 10 || y < 1 || y > 9 || !hasQuanCo || (xMove == 0 && yMove == 0));
 
-        do {
-            System.out.print("Nhập tọa độ xMove, yMove: ");
-            xMove = sc.nextInt();
-            yMove = sc.nextInt();
-
-            canMove = this.banco[x][y].canMoveTo(xMove, yMove, this.banco);
-            if (canMove) this.moveQuanCo(x, y, xMove, yMove);
-            else System.out.println("Nước này không đi được. Hãy chọn lại!");
-        }  while ( xMove < 1 || xMove > 10 || yMove < 1 || yMove > 9 || !canMove);
 
 
     }
