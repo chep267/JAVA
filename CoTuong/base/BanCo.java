@@ -103,7 +103,7 @@ public class BanCo {
     }
 
     public void inBanCo() {
-        System.out.println(CYAN_COLOR + "--------------------------Cờ tướng---------------------------" + ANSI_RESET);
+        System.out.println(CYAN_COLOR + "--------------------------Cờ tướng---------------------------\n" + ANSI_RESET);
         System.out.println(CYAN_COLOR + "      1     2     3     4     5     6     7     8     9" + ANSI_RESET);
         System.out.println(CYAN_COLOR + "-------------------------------------------------------------" + ANSI_RESET);
 
@@ -178,7 +178,7 @@ public class BanCo {
                     canMove = this.banco[x][y].canMoveTo(xMove, yMove, this.banco);
                     if (canMove) this.moveQuanCo(x, y, xMove, yMove);
                     step++;
-                }  while ( xMove < 1 || xMove > 10 || yMove < 1 || yMove > 9 || (!canMove && step < 10));
+                }  while ( xMove < 1 || xMove > 10 || yMove < 1 || yMove > 9 || (xMove == x && yMove == y) || (!canMove && step < 10));
             }
         } while ( x < 1 || x > 10 || y < 1 || y > 9 || !hasQuanCo || step == 10);
     }
