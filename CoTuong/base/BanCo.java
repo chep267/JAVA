@@ -131,8 +131,7 @@ public class BanCo {
         this.inBanCo();
     }
 
-    public void Player_Play(int color) {
-        Scanner sc = new Scanner(System.in);
+    public void Player_Play(int color, Scanner sc) {
         int x, y, xMove, yMove;
         boolean hasQuanCo;
         boolean canMove;
@@ -160,25 +159,28 @@ public class BanCo {
 
     }
 
-    public void Auto_Play(int color) {
-        Random a = new Random();
+    public void Auto_Play(int color, Random a) {
         int x, y, xMove, yMove;
         boolean hasQuanCo;
         boolean canMove;
 
-        do {
-            x = a.nextInt(10) + 1;
-            y = a.nextInt(9) + 1;
+        try {
+            do {
+                x = a.nextInt(10) + 1;
+                y = a.nextInt(9) + 1;
 
-            hasQuanCo = this.banco[x][y].getParam("color") == color;
-        } while ( x < 1 || x > 10 || y < 1 || y > 9 || !hasQuanCo);
+                hasQuanCo = this.banco[x][y].getParam("color") == color;
+            } while ( x < 1 || x > 10 || y < 1 || y > 9 || !hasQuanCo);
 
-        do {
-            xMove = a.nextInt(10) + 1;
-            yMove = a.nextInt(9) + 1;
+            do {
+                xMove = a.nextInt(10) + 1;
+                yMove = a.nextInt(9) + 1;
 
-            canMove = this.banco[x][y].canMoveTo(xMove, yMove, this.banco);
-            if (canMove) this.moveQuanCo(x, y, xMove, yMove);
-        }  while ( xMove < 1 || xMove > 10 || yMove < 1 || yMove > 9 || !canMove);
+                canMove = this.banco[x][y].canMoveTo(xMove, yMove, this.banco);
+                if (canMove) this.moveQuanCo(x, y, xMove, yMove);
+            }  while ( xMove < 1 || xMove > 10 || yMove < 1 || yMove > 9 || !canMove);
+        } catch (Exception e) {
+            System.out.println("error: " + e);
+        }
     }
 }

@@ -32,7 +32,9 @@ public class Ma extends QuanCo {
         int thisX = this.getParam("x");
         int thisY = this.getParam("y");
         int thisColor = this.getParam("color");
+
         System.out.println("Mã: (" + thisX + "," + thisY + ") --> (" + xMove + "," + yMove + ")");
+
         if (thisColor == 1) return "Mã " + thisY + (thisX < xMove ? " tấn " : " thoái ") + yMove + " - ";
         return "Mã " + thisY + (thisX < xMove ? " thoái " : " tấn ") + yMove + " - ";
     }

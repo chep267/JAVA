@@ -31,12 +31,11 @@ public class Vua extends QuanCo {
         int thisX = this.getParam("x");
         int thisY = this.getParam("y");
         int thisColor = this.getParam("color");
+
         System.out.println("Tướng: (" + thisX + "," + thisY + ") --> (" + xMove + "," + yMove + ")");
 
         if (thisX == xMove) return  "Tướng " + thisX + " bình " + abs(thisY - yMove) + " - ";
-
-        if (thisX > xMove) return "Tướng " + thisY + (thisColor == 1 ? " thoái " : " tấn ") + abs(thisY - yMove) + " - ";
-
-        return "Tướng " + thisY + (thisColor == 1 ? " tấn " : " thoái ") + abs(thisY - yMove) + " - ";
+        if (thisColor == 1) return "Tướng " + thisY + (thisX > xMove ? " thoái " : " tấn ") + abs(thisY - yMove) + " - ";
+        return "Tướng " + thisY + (thisX > xMove ? " tấn " : " thoái ") + abs(thisY - yMove) + " - ";
     }
 }

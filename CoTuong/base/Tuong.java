@@ -75,10 +75,8 @@ public class Tuong extends QuanCo {
         int thisColor = this.getParam("color");
 
         System.out.println("Tịnh: (" + thisX + "," + thisY + ") --> (" + xMove + "," + yMove + ")");
-        if (thisColor == 1) {
-            return "Tịnh " + thisY + (thisX > xMove ? " thoái " : " tấn ") + abs(thisY - yMove) + " - ";
-        }
 
+        if (thisColor == 1) return "Tịnh " + thisY + (thisX > xMove ? " thoái " : " tấn ") + abs(thisY - yMove) + " - ";
         return "Tịnh " + thisY + (thisX > xMove ? " tấn " : " thoái ") + abs(thisY - yMove) + " - ";
     }
 }

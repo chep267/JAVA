@@ -34,9 +34,7 @@ public class Si extends QuanCo {
         System.out.println("Sĩ: (" + thisX + "," + thisY + ") --> (" + xMove + "," + yMove + ")");
 
         if (thisX == xMove) return  "Sĩ " + thisX + " bình " + abs(thisY - yMove) + " - ";
-
-        if (thisX > xMove) return "Sĩ " + thisY + (thisColor == 1 ? " thoái " : " tấn ") + abs(thisY - yMove) + " - ";
-
-        return "Sĩ " + thisY + (thisColor == 1 ? " tấn " : " thoái ") + abs(thisY - yMove) + " - ";
+        if (thisColor == 1) return "Sĩ " + thisY + (thisX > xMove ? " thoái " : " tấn ") + abs(thisY - yMove) + " - ";
+        return "Sĩ " + thisY + (thisX > xMove ? " tấn " : " thoái ") + abs(thisY - yMove) + " - ";
     }
 }

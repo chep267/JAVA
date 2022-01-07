@@ -50,7 +50,7 @@ public class Xe extends QuanCo {
         System.out.println("Xe: (" + thisX + "," + thisY + ") --> (" + xMove + "," + yMove + ")");
 
         if (thisX == xMove) return "Xe " + thisY + " bình " + yMove + " - ";
-        if (thisX > xMove) return thisColor == 1 ? "Xe " + thisY + " thoái " + yMove + " - " : "Xe " + thisY + " tấn " + yMove + " - ";
-        return thisColor == 1 ? "Xe " + thisY + " tấn " + abs(thisX - xMove) + " - " : "Xe " + thisY + " thoái " + abs(thisX - xMove) + " - ";
+        if (thisColor == 1) return "Xe " + thisY + (thisX > xMove ? " thoái " : " tấn " ) + abs(thisX - xMove) + " - ";
+        return "Xe " + thisY + (thisX > xMove ? " tấn " : " thoái " ) + abs(thisX - xMove) + " - ";
     }
 }

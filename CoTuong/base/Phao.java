@@ -52,7 +52,7 @@ public class Phao extends QuanCo {
         System.out.println("Pháo: (" + thisX + "," + thisY + ") --> (" + xMove + "," + yMove + ")");
 
         if (thisX == xMove) return "Pháo " + thisY + " bình " + yMove + " - ";
-        if (thisX > xMove) return thisColor == 1 ? "Pháo " + thisY + " thoái " + yMove + " - " : "Pháo " + thisY + " tấn " + yMove + " - ";
-        return thisColor == 1 ? "Pháo " + thisY + " tấn " + abs(thisX - xMove) + " - " : "Pháo " + thisY + " thoái " + abs(thisX - xMove) + " - ";
+        if (thisColor == 1) return "Pháo " + thisY + (thisX > xMove ? " thoái " : " tấn " ) + abs(thisX - xMove) + " - ";
+        return "Pháo " + thisY + (thisX > xMove ? " tấn " : " thoái " ) + abs(thisX - xMove) + " - ";
     }
 }
