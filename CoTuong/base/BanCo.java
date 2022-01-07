@@ -176,16 +176,10 @@ public class BanCo {
                     yMove = a.nextInt(9) + 1;
 
                     canMove = this.banco[x][y].canMoveTo(xMove, yMove, this.banco);
-                    if (canMove) {
-                        System.out.println("Máy đến: (" + xMove + "," + yMove + ")");
-                        this.moveQuanCo(x, y, xMove, yMove);
-                    }
+                    if (canMove) this.moveQuanCo(x, y, xMove, yMove);
                     step++;
                 }  while ( xMove < 1 || xMove > 10 || yMove < 1 || yMove > 9 || (!canMove && step < 10));
             }
         } while ( x < 1 || x > 10 || y < 1 || y > 9 || !hasQuanCo || step == 10);
-        System.out.println("Máy chọn: (" + x + "," + y + ")  -->  " + this.banco[x][y].getParam("type"));
-
-
     }
 }
