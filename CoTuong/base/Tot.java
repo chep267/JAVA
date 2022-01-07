@@ -36,6 +36,6 @@ public class Tot extends QuanCo {
 
         System.out.println("Tốt: (" + thisX + "," + thisY + ") --> (" + xMove + "," + yMove + ")");
 
-        return thisX == xMove ? "Tốt " + thisX + " bình " + abs(thisY - yMove) + " - " : "Tốt " + thisY + " tấn " + abs(thisX - xMove) + " - ";
+        return "Tốt " + thisX + (thisX == xMove ? " bình " + abs(thisY - yMove) : " tấn " + abs(thisX - xMove)) + " - ";
     }
 }
