@@ -1,1 +1,1 @@
-# JAVA Chinese Chess by Dongntd
+# JAVA by dongntd
